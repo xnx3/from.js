@@ -1,0 +1,54 @@
+<html>
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+<script src="./from.js"></script>
+ 
+
+<div id="from_id">
+
+	选择：
+	<select name="storage">
+		<option value="1">本地存储</option>
+		<option value="2">SFTP存储</option>
+	</select>
+	<br/>
+	username:<input type="text" name="username" value="222" />
+	<br/>
+	password:<input type="text" name="password" value="333" />
+	<br/>
+	info:<textarea name="info"></textarea>
+</div>
+	
+<br/><br/>
+
+<button onclick="getJsonData();">获取表单数据</button>
+<button onclick="fill();">自动填充表单</button>
+
+<script>
+//获取表单数据
+function getJsonData(){
+	var data = from.getJsonData('from_id');
+	console.log('自动获得的输入数据：');
+	console.log(data);
+	
+	//弹出窗口看下数据
+	alert(JSON.stringify(data, null, 4));
+}
+
+//自动填充表单
+function fill(){
+	var data = {
+			'storage':'2',
+			'username':'管雷鸣',
+			'password':'123',
+			'info':'hello word'
+	};
+	from.fill('from_id',data);
+}
+
+</script>
+</body>
+</html>
